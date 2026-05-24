@@ -1,16 +1,19 @@
-export interface Exercise {
-  id: string;
-  name: string;
-  target_muscle_group: string;
-  mechanics: string;
-  equipment: string;
-  description: string;
-}
+import { useState } from "react";
+import { useHttp } from "./hooks/useHttp";
+import type { Exercise } from "./types/exercises.types";
 
 export default function App() {
+  const [page, setPage] = useState<number>(1);
+  const { data } = useHttp<Exercise>("exercises", page, 2);
+  console.log("page:", page);
+  console.log("data:", data);
+
   return (
     <>
-  
+      <p>{data?.results.map((a) => a.name)}</p>
+
+      {!data && <p>loh</p>}
+      <button onClick={() => setPage((prev) => prev + 1)}>next page</button>
     </>
   );
 }
