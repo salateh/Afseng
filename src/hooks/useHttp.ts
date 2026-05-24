@@ -1,11 +1,25 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
+import type { ApiResponse } from "../types/common.types";
 
-export function useHttp<T>(from: string) {
-  const [data, setData] = useState<T | null>(null);
+export type useHttpPropsTable =
+  | "exercises"
+  | "exercise_logs"
+  | "workout_sessions"
+  | "workout_plans";
+
+export function useHttp<T>(
+  from: useHttpPropsTable,
+  page: number = 1,
+  pageSize: number = 9,
+) {
+  const [data, setData] = useState<ApiResponse<T> | null>(null);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
+  const offset = (page - 1) * pageSize;
+  const limit = offset + pageSize - 1;
   console.log("Делаю запрос на:", from);
 
   useEffect(() => {
@@ -18,9 +32,14 @@ export function useHttp<T>(from: string) {
       setLoading(true);
 
       try {
-        const { data:resData, error:resError } = await supabase
+        const {
+          data: resData,
+          count,
+          error: resError,
+        } = await supabase
           .from(from)
-          .select("*")
+          .select("*", { count: "exact" })
+          .range(offset, limit)
           .abortSignal(controller.signal);
 
         if (resError) {
@@ -29,7 +48,11 @@ export function useHttp<T>(from: string) {
 
         await new Promise((resolve) => setTimeout(resolve, 500));
 
-        setData(resData as T);
+        setData({
+          count: count ?? 0,
+          results: (resData || []) as T[],
+        });
+        console.log(resData);
       } catch (e: any) {
         if (e.name === "CanceledError" || e.name === "AbortError") return;
         const error = e as Error;
@@ -44,7 +67,7 @@ export function useHttp<T>(from: string) {
     return () => {
       controller.abort();
     };
-  }, [from]);
+  }, [from, page, pageSize]);
 
   return { data, error, loading, setLoading };
 }
