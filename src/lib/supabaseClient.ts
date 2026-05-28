@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from "@supabase/supabase-js";
 
 // Вытаскиваем наши секретные ключи из файла .env.local, который мы настроили вчера
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;

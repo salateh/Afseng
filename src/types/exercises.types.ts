@@ -1,4 +1,4 @@
-import { ApiResponse, BaseState } from "./common.types";
+import {type  BaseState } from "./common.types";
 
 // Основной объект из БД (из таблицы exercises)
 export interface Exercise {
@@ -12,7 +12,7 @@ export interface Exercise {
 }
 
 // Типизация ответа сервера для списка упражнений
-export interface ExercisesResponse extends ApiResponse<Exercise>{}
+// export interface ExercisesResponse extends ApiResponse<Exercise>{}
 
 // Параметры фильтрации при GET запросе
 export interface ExerciseFilters {

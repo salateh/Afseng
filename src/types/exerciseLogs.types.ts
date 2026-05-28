@@ -1,4 +1,4 @@
-import { ApiResponse BaseState } from "./common.types";
+import type { ApiResponse, BaseState } from "./common.types";
 
 export interface ExerciseLog {
   id: string;
@@ -13,6 +13,7 @@ export interface ExerciseLog {
   created_at: string;
 }
 
+export interface ExerciseLogsResponse extends ApiResponse<ExerciseLog> {}
 
 export interface ExerciseLogFilters {
   session_id?: string;

@@ -35,7 +35,7 @@ export function useHttp<T>(
         const {
           data: resData,
           count,
-          error: resError,
+          error: resError = false,
         } = await supabase
           .from(from)
           .select("*", { count: "exact" })
@@ -52,11 +52,15 @@ export function useHttp<T>(
           count: count ?? 0,
           results: (resData || []) as T[],
         });
-        console.log(resData);
-      } catch (e: any) {
-        if (e.name === "CanceledError" || e.name === "AbortError") return;
+        console.log(`resData: ${resData}`);
+        console.log(`controller: ${controller.signal.aborted}`);
+      } catch (e: unknown) {
         const error = e as Error;
-        setError(error.message || "something went wrong");
+        if (controller.signal.aborted) {
+          setError("");
+          return;
+        }
+        if (error) setError(error.message || "something went wrong");
       } finally {
         if (!controller.signal.aborted) {
           setLoading(false);

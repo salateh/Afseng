@@ -1,4 +1,4 @@
-import { ApiResponse, BaseState } from "./common.types";
+import type { ApiResponse, BaseState } from "./common.types";
 
 // Структура для jsonb поля split_structure
 export interface SplitStructure {
@@ -18,7 +18,7 @@ export interface WorkoutPlan {
   updated_at: string;
 }
 
-export interface WorkoutPlansResponse extends ApiResponse<WorkoutPlan> {}
+export interface WorkoutPlansResponse extends ApiResponse<WorkoutPlan>{}
 
 export interface WorkoutPlanFilters {
   minDays?: number;

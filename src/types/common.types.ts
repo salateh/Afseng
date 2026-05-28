@@ -1,9 +1,9 @@
 export interface ApiResponse<T> {
-  count: number | null
+  count: number | null;
   results: T[];
 }
 
-export interface ApiError { 
+export interface ApiError {
   status: number;
   statusText: string;
   message: string;
@@ -33,3 +33,4 @@ export interface BaseState<ListItem, DetailsItem, Filters> {
   sortField: string;
   sortOrder: SortOrder;
 }
+

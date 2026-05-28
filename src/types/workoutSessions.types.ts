@@ -1,4 +1,4 @@
-import { ApiResponse, BaseState } from "./common.types";
+import type { ApiResponse, BaseState } from "./common.types";
 
 export interface WorkoutSession {
   id: string;

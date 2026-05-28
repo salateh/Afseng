@@ -4,15 +4,14 @@ import type { Exercise } from "./types/exercises.types";
 
 export default function App() {
   const [page, setPage] = useState<number>(1);
-  const { data } = useHttp<Exercise>("exercises", page, 2);
+  const { data, error } = useHttp<Exercise>("exercises", page, 2);
   console.log("page:", page);
   console.log("data:", data);
 
   return (
     <>
       <p>{data?.results.map((a) => a.name)}</p>
-
-      {!data && <p>loh</p>}
+      {error && <p>{error}</p>}
       <button onClick={() => setPage((prev) => prev + 1)}>next page</button>
     </>
   );
