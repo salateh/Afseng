@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .grid-areas-layout {
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+  }
+}
+
+@media (min-width: 768px) {
+  .grid-areas-layout {
+    grid-template-areas:
+      "sidebar header"
+      "sidebar main"
+      "footer footer";
+  }
+}
