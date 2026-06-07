@@ -13,14 +13,14 @@ export function useHttp<T>(
   page: number = 1,
   pageSize: number = 9,
 ) {
+  //
   const [data, setData] = useState<ApiResponse<T> | null>(null);
-
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [isInsert, setIsInsert] = useState<boolean>(false);
 
   const offset = (page - 1) * pageSize;
   const limit = offset + pageSize - 1;
-  console.log("Делаю запрос на:", from);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -52,12 +52,12 @@ export function useHttp<T>(
           count: count ?? 0,
           results: (resData || []) as T[],
         });
-        console.log(`resData: ${resData}`);
-        console.log(`controller: ${controller.signal.aborted}`);
       } catch (e: unknown) {
         const error = e as Error;
         if (controller.signal.aborted) {
           setError("");
+          console.log("controller.signal.aborted");
+
           return;
         }
         if (error) setError(error.message || "something went wrong");
@@ -71,7 +71,17 @@ export function useHttp<T>(
     return () => {
       controller.abort();
     };
-  }, [from, page, pageSize]);
+  }, [from, page, pageSize, isInsert]);
+  async function insertData(sendingData: Partial<T>) {
+    if (!sendingData) return;
+    const { error: resError } = await supabase
+      .from(from)
+      .insert([sendingData] as any);
 
-  return { data, error, loading, setLoading };
+    if (resError) throw new Error(resError.message);
+    else if (!resError) {
+      setIsInsert((prev) => !prev);
+    }
+  }
+  return { data, insertData, error, loading, setLoading };
 }

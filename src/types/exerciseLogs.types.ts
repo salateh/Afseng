@@ -7,13 +7,11 @@ export interface ExerciseLog {
   set_number: number;
   reps: number;
   weight_kg: number; // numeric
-  rpe: number;       // numeric
+  rpe: number; // numeric
   rir: number;
   cns_fatigue_weight: number; // numeric
   created_at: string;
 }
-
-export interface ExerciseLogsResponse extends ApiResponse<ExerciseLog> {}
 
 export interface ExerciseLogFilters {
   session_id?: string;
@@ -31,5 +29,8 @@ export interface ExerciseLogRequest {
   rir: number;
   cns_fatigue_weight: number;
 }
-
-export interface ExerciseLogsState extends BaseState<ExerciseLog, ExerciseLog, ExerciseLogFilters> {}
+export interface ExerciseLogsState extends BaseState<
+  ExerciseLog,
+  ExerciseLog,
+  ExerciseLogFilters
+> {}

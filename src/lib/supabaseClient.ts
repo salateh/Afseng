@@ -6,3 +6,4 @@ const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 // Инициализируем клиент Supabase для работы с нашей базой данных Afseng
 export const supabase = createClient(supabaseUrl, supabaseKey);
+

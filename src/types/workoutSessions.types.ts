@@ -1,4 +1,4 @@
-import type { ApiResponse, BaseState } from "./common.types";
+import type {  BaseState } from "./common.types";
 
 export interface WorkoutSession {
   id: string;
@@ -10,7 +10,6 @@ export interface WorkoutSession {
   created_at: string;
 }
 
-export interface WorkoutSessionsResponse extends ApiResponse<WorkoutSession> {}
 
 export interface WorkoutSessionFilters {
   plan_id?: string;
