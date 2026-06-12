@@ -2,8 +2,8 @@ import { useState } from "react";
 import type {
   WorkoutPlan,
   WorkoutPlanRequest,
-} from "../types/workoutPlans.types";
-import { useHttp } from "./useHttp";
+} from "../../types/workoutPlans.types";
+import { useHttp } from "../Other/useHttp";
 import type React from "react";
 
 export const useWorkout = () => {

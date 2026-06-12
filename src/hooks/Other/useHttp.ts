@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { supabase } from "../lib/supabaseClient";
-import type { ApiResponse } from "../types/common.types";
+import { supabase } from "../../lib/supabaseClient";
+import type { ApiResponse } from "../../types/common.types";
 
 export type useHttpPropsTable =
   | "exercises"

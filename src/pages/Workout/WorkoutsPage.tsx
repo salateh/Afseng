@@ -1,6 +1,6 @@
 import React from "react";
 import { WorkoutPlans } from "../../components/Workouts/WorkoutPlans";
-import { useWorkout } from "../../hooks/useWorkout";
+import { useWorkout } from "../../hooks/Workout/useWorkout";
 import { WorkoutPlanForm } from "../../components/Workouts/WorkoutPlanForm";
 //
 // const workoutPlan_object: WorkoutPlanRequest = {
