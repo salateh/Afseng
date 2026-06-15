@@ -27,70 +27,11 @@ export const configurations: Configuration[] = [
     icon: BicepsFlexed,
     label: "Workouts",
     configuration: [
-      { path: "/create-workout", icon: Plus, label: "Create Workout" },
-      { icon: Construction, label: "Without a path" },
-      { icon: Construction, label: "Without a path" },
-      { icon: Construction, label: "Without a path" },
-    ],
-  },
-  {
-    icon: Construction,
-    label: "Without a path",
-    configuration: [
-      { icon: Construction, label: "Without a path" },
-      { icon: Construction, label: "Without a path" },
-      { icon: Construction, label: "Without a path" },
-      { icon: Construction, label: "Without a path" },
-    ],
-  },
-  {
-    icon: Construction,
-    label: "Without a path",
-    configuration: [
-      { icon: Construction, label: "Without a path" },
-      { icon: Construction, label: "Without a path" },
-      { icon: Construction, label: "Without a path" },
-      { icon: Construction, label: "Without a path" },
-    ],
-  },
-  {
-    icon: Construction,
-    label: "Without a path",
-    configuration: [
-      { icon: Construction, label: "Without a path" },
-      { icon: Construction, label: "Without a path" },
-      { icon: Construction, label: "Without a path" },
-      { icon: Construction, label: "Without a path" },
-    ],
-  },
-  {
-    icon: Construction,
-    label: "Without a path",
-    configuration: [
-      { icon: Construction, label: "Without a path" },
-      { icon: Construction, label: "Without a path" },
-      { icon: Construction, label: "Without a path" },
-      { icon: Construction, label: "Without a path" },
-    ],
-  },
-  {
-    icon: Construction,
-    label: "Without a path",
-    configuration: [
-      { icon: Construction, label: "Without a path" },
-      { icon: Construction, label: "Without a path" },
-      { icon: Construction, label: "Without a path" },
-      { icon: Construction, label: "Without a path" },
-    ],
-  },
-  {
-    icon: Construction,
-    label: "Without a path",
-    configuration: [
-      { icon: Construction, label: "Without a path" },
-      { icon: Construction, label: "Without a path" },
-      { icon: Construction, label: "Without a path" },
-      { icon: Construction, label: "Without a path" },
+      {
+        path: "/create-workout",
+        icon: Plus,
+        label: "Create Workout ",
+      },
     ],
   },
 ];

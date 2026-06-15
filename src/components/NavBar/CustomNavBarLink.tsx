@@ -12,41 +12,45 @@ export const CustomNavBarLink = memo(
     return (
       <>
         <button
-          className="flex w-full  items-center "
+          className="flex w-full justify-start items-center mb-3 "
           onClick={() => {
             if (path) onNavigate(path);
+            if (config) setIsExpanded(!isExpanded);
           }}
         >
-          <div className="flex whitespace-nowrap ">
+          <div className="flex items-center flex-1 overflow-hidden ">
             <Icon
               color={`${isExpanded && isOpen ? "#dfdfdf" : "#858585"}`}
               strokeWidth={1.4}
               size={24}
-              className="flex-shrink-0"
+              className="flex-shrink-0 w-6"
             />
             <span
-              className={` relative left-2   transition-all duration-700 flex-1 text-left 
-    ${isOpen ? "opacity-100 max-w-full visible" : "opacity-0 w-0  invisible"} ${isExpanded ? "text-[#dfdfdf]" : "text-[#858585]"}`}
+              className={` ml-2 transition-opacity duration-300 ease-in-out  truncate whitespace-nowrap
+   ${isOpen ? "opacity-100" : "opacity-0"} ${isExpanded ? "text-[#dfdfdf]" : "text-[#858585]"}`}
             >
               {label}
             </span>
           </div>
-          {!path && isOpen && (
+          {!path && (
             <div
               onClick={(e) => {
                 e.stopPropagation();
                 setIsExpanded(!isExpanded);
               }}
-              className="flex-shrink-0 w-6 flex justify-center items-center ml-3"
+              className=" w-6 flex justify-center items-center ml-2 flex-shrink-0"
             >
               <ChevronRight
                 color={`${isExpanded && isOpen ? "#dfdfdf" : "#858585"}`}
-                className={`${isExpanded && isOpen ? "rotate-90" : "rotate-0"} transition-transform duration-700 hover:bg-white/5 rounded-lg `}
+                className={`${isExpanded && isOpen ? "rotate-90" : "rotate-0"} transition-transform duration-300 hover:bg-white/5 rounded-lg `}
               />
             </div>
           )}
         </button>
-        <div className={`${isExpanded && isOpen ? "block" : "hidden "}`}>
+        {/* {isExpanded && isOpen && ( */}
+        <div
+          className={`${isExpanded ? "block" : "hidden "} transition-all duration-700 ease-in-out ${isOpen ? "ml-3" : ""}`}
+        >
           {config?.map((a, index) => (
             <CustomNavBranchLink
               config={a}
@@ -54,6 +58,7 @@ export const CustomNavBarLink = memo(
             />
           ))}
         </div>
+        {/* )} */}
       </>
     );
   },
