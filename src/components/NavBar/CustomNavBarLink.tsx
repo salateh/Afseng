@@ -2,6 +2,7 @@ import { ChevronRight } from "lucide-react";
 import { memo, useState } from "react";
 import type { CustomNavLinkProps } from "./configurations";
 import { CustomNavBranchLink } from "./CustomNavBranchLink";
+import { Button } from "../Button/Button";
 
 export const CustomNavBarLink = memo(
   ({ isOpen, configuration, onNavigate }: CustomNavLinkProps) => {
@@ -11,42 +12,52 @@ export const CustomNavBarLink = memo(
 
     return (
       <>
-        <button
-          className="flex w-full  items-center "
-          onClick={() => {
-            if (path) onNavigate(path);
-          }}
-        >
-          <div className="flex whitespace-nowrap ">
-            <Icon
-              color={`${isExpanded && isOpen ? "#dfdfdf" : "#858585"}`}
-              strokeWidth={1.4}
-              size={24}
-              className="flex-shrink-0"
-            />
+        <div className="flex w-full items-center mb-3 group">
+          <Button
+            classes="flex flex-1 justify-start items-center overflow-hidden"
+            icon={
+              <Icon
+                color={`${isExpanded && isOpen ? "#dfdfdf" : "#858585"}`}
+                strokeWidth={1.4}
+                size={24}
+                className="flex-shrink-0 w-6"
+              />
+            }
+            onClick={() => {
+              if (path) onNavigate(path);
+              if (config) setIsExpanded(!isExpanded);
+            }}
+          >
             <span
-              className={` relative left-2   transition-all duration-700 flex-1 text-left 
-    ${isOpen ? "opacity-100 max-w-full visible" : "opacity-0 w-0  invisible"} ${isExpanded ? "text-[#dfdfdf]" : "text-[#858585]"}`}
+              className={`ml-2 transition-opacity duration-300 ease-in-out truncate whitespace-nowrap ${
+                isOpen ? "opacity-100" : "opacity-0"
+              } ${isExpanded ? "text-[#dfdfdf]" : "text-[#858585]"}`}
             >
               {label}
             </span>
-          </div>
+          </Button>
+
           {!path && isOpen && (
-            <div
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsExpanded(!isExpanded);
-              }}
-              className="flex-shrink-0 w-6 flex justify-center items-center ml-3"
+            <button
+              type="button"
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="w-6 h-6 flex justify-center items-center ml-2 flex-shrink-0"
             >
               <ChevronRight
                 color={`${isExpanded && isOpen ? "#dfdfdf" : "#858585"}`}
-                className={`${isExpanded && isOpen ? "rotate-90" : "rotate-0"} transition-transform duration-700 hover:bg-white/5 rounded-lg `}
+                className={`${
+                  isExpanded ? "rotate-90" : "rotate-0"
+                } transition-transform duration-300 hover:bg-white/5 rounded-lg`}
               />
-            </div>
+            </button>
           )}
-        </button>
-        <div className={`${isExpanded && isOpen ? "block" : "hidden "}`}>
+        </div>
+
+        <div
+          className={`${isExpanded ? "block" : "hidden"} transition-all duration-700 ease-in-out ${
+            isOpen ? "ml-1" : ""
+          }`}
+        >
           {config?.map((a, index) => (
             <CustomNavBranchLink
               config={a}
