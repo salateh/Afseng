@@ -6,7 +6,7 @@
 @plugin "tailwindcss-grid-template-areas";
 
 body {
-  @apply m-0 p-0 min-h-screen font-sans text-base leading-normal  bg-[#181818] antialiased overflow-x-hidden overscroll-none flex flex-col;
+  @apply m-0 p-0 min-h-screen font-sans text-base leading-normal  bg-app-bg antialiased overflow-x-hidden overscroll-none flex flex-col;
 
   /* Свойства, которых нет в базовом наборе Tailwind (добавляются стандартным CSS): */
   -webkit-text-size-adjust: 100%;
