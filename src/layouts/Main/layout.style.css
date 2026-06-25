@@ -19,25 +19,3 @@
     /* "footer footer"; */
   }
 }
-
-.open {
-  width: 13rem;
-  transition:
-    width 0.2s ease-in-out,
-    background-color 0.2s ease-in-out;
-  /* background-color: inherit; */
-  background-color: rgba(255, 255, 255, 0.084);
-  border-style: dashed;
-  border-right-width: 1.5px;
-  font-size: 16px;
-  color: rgba(107, 114, 128, 0.199);
-  font-weight: 600;
-}
-.closed {
-  width: 3.5rem;
-
-  transition:
-    width 0.2s ease-in-out,
-    background-color 0.2s ease-in-out;
-  background-color: inherit;
-}

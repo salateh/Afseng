@@ -4,12 +4,12 @@ import { CustomNavBarLink } from "./CustomNavBarLink";
 
 ///
 
-export function NavBar() {
+export const NavBar = ()=> {
   const { isOpen, handleNavigate } = useNavBar();
 
   return (
     <>
-      <div className="flex flex-col  items-start justify-center gap-3 ">
+      <div className="flex flex-col w-full items-start justify-start   ">
         {configurations.map((a, index) => {
           return (
             <CustomNavBarLink
