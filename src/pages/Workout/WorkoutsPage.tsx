@@ -2,20 +2,7 @@ import React from "react";
 import { WorkoutPlans } from "../../components/Workouts/WorkoutPlans";
 import { useWorkout } from "../../hooks/Workout/useWorkout";
 import { WorkoutPlanForm } from "../../components/Workouts/WorkoutPlanForm";
-//
-// const workoutPlan_object: WorkoutPlanRequest = {
-//   name: "name...",
-//   num_days: 1,
-//   description: "decription...",
-//   split_structure: {
-//     "1": {
-//       dayName: "dayName...",
-//       focusMuscleGroups: ["focusMuscleGroups1...", "focusMuscleGroups2..."],
-//     },
-//   },
-// };
 export function WorkoutPage() {
-  // const { data, loading } = useHttp<WorkoutPlan>("workout_plans");
   const {
     data,
     workout,
